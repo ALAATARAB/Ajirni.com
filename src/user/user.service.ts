@@ -11,6 +11,7 @@ import { Repository } from "typeorm";
 import bcryptjs from "bcryptjs";
 import { ConfigService } from "@nestjs/config";
 import { Place } from "./entities/place.entity";
+import path from "path";
 
 @Injectable()
 export class UserService {
@@ -96,10 +97,9 @@ export class UserService {
   }
 
   fillTheCountries() {
-    fs.readFile("./countriesData.json", "utf-8", async (err, data) => {
+    fs.readFile(path.join(__dirname,'..','..',"countriesData.json"), "utf-8", async (err, data) => {
       if (err) throw new InternalServerErrorException();
-      let allData: { country: string; cities: string[] }[] =
-        await JSON.parse(data);
+      let allData: { country: string; cities: string[] }[] = await JSON.parse(data);
       for (const { country, cities } of allData) {
         for (const city of cities) {
           await this.placeRepo.save({ country, city });

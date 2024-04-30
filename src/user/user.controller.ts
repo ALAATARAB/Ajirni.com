@@ -10,17 +10,11 @@ import { ToolService } from '../tool/tool.service';
 export class UserController {
     constructor(private readonly userService : UserService,private readonly toolService:ToolService){}
 
-    // TODO: This Called only once 
-    // @Get('fill')
-    // fillAllTheCountries() {
-    //     return this.userService.fillTheCountries();
-    // }
-    
-    @Patch(':id')
-    async update(@Param('id',ParseIntPipe) userId:number) {
-        
+    @Get('fill')
+    fillAllTheCountries() {
+        return this.userService.fillTheCountries();
     }
-    
+
     @Get('countries')
     async getAllCountries() : Promise<Place[]>{
         return this.userService.getAllCountries();
@@ -44,22 +38,10 @@ export class UserController {
     async findOne(@Param('userId') userId:number) {
         return await this.userService.findOneById(userId);
     }
-
-    @Delete('clearAll')
-    async deleteAll() {
-        return await this.userService.clearUsers();
-    }
     
-    // TODO: just for admins
     @Delete(':id')
     async remove(@Param('id',ParseIntPipe) userId : number) {
         return await this.userService.deleteUser(userId);
     }
     
-    
-    // @Get()
-    // async getUser(@Body('email') email:string) {
-    //     return await this.userService.findOneByEmail(email,'',false);
-    // }
-
 }
