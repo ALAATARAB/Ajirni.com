@@ -15,6 +15,6 @@
 - TS
 - Nodemailer
 
-Make sure to preview the project : [here](https://www.example.com)
+Make sure to preview the project : [here](https://www.linkedin.com/feed/update/urn:li:activity:7187007107991314432/)
 
 ### *Note : This project is from my participation in the Ramadan Hackathon by [Arab American Society](https://www.aased.org/)*
