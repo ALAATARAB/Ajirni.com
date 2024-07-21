@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString } from "class-validator";
 
-export class CreateToolDTO {
+export class CreateToolDto {
     @IsString()
     @IsNotEmpty()
     title:string;
