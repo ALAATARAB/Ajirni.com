@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param, UseGuards, ParseIntPipe, Req, UploadedFile, UseInterceptors, UsePipes, ValidationPipe, Res, Query } from '@nestjs/common';
 import { ToolService } from './tool.service';
-import { CreateToolDTO } from './dto/create-tool.dto';
+import { CreateToolDto } from './dto/create-tool.dto';
 import { Express , Request, Response } from 'express';
 import { AuthorizedGuard } from '../auth/guards/authorized.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -18,7 +18,7 @@ export class ToolController {
   @UseInterceptors(FileInterceptor('image',multerConfig))
   async create(
     @UploadedFile() file: Express.Multer.File,
-    @Body() info:CreateToolDTO,
+    @Body() info:CreateToolDto,
     @Req() request : Request&{userId:number}
       )
   {
