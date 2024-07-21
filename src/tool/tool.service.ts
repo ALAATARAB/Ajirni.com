@@ -1,5 +1,5 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
-import { CreateToolDTO } from './dto/create-tool.dto';
+import { CreateToolDto } from './dto/create-tool.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Tool } from './entities/tool.entity';
 import { Between, Like, Not, Repository } from 'typeorm';
@@ -12,7 +12,7 @@ export class ToolService {
     @InjectRepository(Tool) private toolRepo:Repository<Tool>,
     @InjectRepository(Place) private placeRepo:Repository<Place>){}
   
-  async create(createToolDto: CreateToolDTO,image:string,userId:number) : Promise<Tool> {
+  async create(createToolDto: CreateToolDto,image:string,userId:number) : Promise<Tool> {
     let place = await this.placeRepo.findOne({
       where: { country: createToolDto.country, city: createToolDto.city },
     });
